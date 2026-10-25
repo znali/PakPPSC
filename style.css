@@ -1,0 +1,122 @@
+/* Typography and Global Base */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+.urdu-text {
+  font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
+  line-height: 2.1;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Accent range inputs */
+input[type="range"] {
+  accent-color: #047857;
+}
+
+/* ========================================================
+   HEADER & NAVBAR OVERLAP PREVENTION (Fixes screenshot error)
+   ======================================================== */
+
+/* Ensure the header expands naturally without fixed height constraint */
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+/* Horizontal scrolling tab bar with no wrap on desktop/mobile so it never breaks layout */
+nav.nav-tabs-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 2px;
+}
+nav.nav-tabs-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.nav-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Status Banner Isolation */
+.status-banner {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  background-color: #0f172a;
+}
+
+.status-text-container {
+  min-width: 0; /* Prevents flexbox item from bursting past parent */
+  flex: 1 1 auto;
+}
+
+.status-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+
+/* Truncate or cleanly wrap long uploaded file names */
+#db-status-title {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Responsive adjustments for Mobile */
+@media (max-width: 768px) {
+  header.site-header {
+    position: relative; /* Avoid taking half the screen on small devices */
+  }
+
+  .status-banner {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .status-actions-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .status-actions-container > * {
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+}
